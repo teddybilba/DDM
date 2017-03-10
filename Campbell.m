@@ -16,21 +16,19 @@ C = [cr1+cn1 cr2+cn2; cr3+cn3 cr4+cn4];
 K = [k11 k12; k21 k22];
 s = tf('s');
 
-poles_system = [];
-poles_system2 = [];
-
+poles_system = [];      % All poles of system
 
 % *** Calculates the poles **** %
 for n = 1:length(Omega)
 G=[0 0; 0 -i*Omega(n)*Jp];
 eq_mat = M*s^2 + (C+G)*s + K;
 sys = inv(eq_mat);
-poles_system = [poles_system  wkeep(pole(sys), length(poles)/2, 'l')];
+poles_system = [poles_system  wkeep(pole(sys), length(poles)/2, 'l')];      % Appends poles to matrix 
 end
 
 
 % **** Plot CAMPBELL DIAGRAM **** %
-if size(poles_system,1) == 2
+if size(poles_system,1) == 2        % If 2 poles
     subplot(2,1,1)
     plot(Omega, real(poles_system(1,:)), 'b', Omega, real(poles_system(2,:)), 'r');
     title('Diagramme de Campbell');
@@ -54,7 +52,7 @@ elseif size(poles_system,1) == 3
     xlabel('Vitesse de rotation');
     ylabel('Im(s)');
     
-elseif size(poles_system,1) == 4
+elseif size(poles_system,1) == 4        % If 4 poles
     figure
     subplot(2,1,1)
     plot(Omega, real(poles_system(1,:)), 'b', Omega, real(poles_system(2,:)), 'r', Omega, real(poles_system(3,:)), 'g', Omega, real(poles_system(4,:)), 'k');
