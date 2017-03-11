@@ -41,8 +41,30 @@ if size(poles_system,1) == 4        % If 2 poles
     xlabel('Vitesse de rotation');
     ylabel('Im(s)');
     
-elseif size(poles_system,1) == 6
+    elseif size(poles_system,1) == 3
     subplot(2,1,1)
     plot(Omega, real(poles_system(1,:)), 'b', Omega, real(poles_system(2,:)), 'r', Omega, real(poles_system(3,:)), 'g');
     title('Diagramme de Campbell');
     xlabel('Vitesse de rotation');
+    ylabel('Re(s)');
+    
+    subplot(2,1,2)
+    plot(Omega, imag(poles_system(1,:)), 'b', Omega, imag(poles_system(2,:)), 'r', Omega, imag(poles_system(3,:)), 'g');
+    xlabel('Vitesse de rotation');
+    ylabel('Im(s)');
+    
+elseif size(poles_system,1) == 4        % If 4 poles
+    figure
+    subplot(2,1,1)
+    plot(Omega, real(poles_system(1,:)), 'b', Omega, real(poles_system(2,:)), 'r', Omega, real(poles_system(3,:)), 'g', Omega, real(poles_system(4,:)), 'k');
+    title('Diagramme de Campbell');
+    xlabel('Vitesse de rotation');
+    ylabel('Re(s)');
+
+
+    subplot(2,1,2)
+    plot(Omega, imag(poles_system(1,:)), 'b', Omega, imag(poles_system(2,:)), 'r', Omega, imag(poles_system(3,:)), 'g', Omega, imag(poles_system(4,:)), 'k');
+    xlabel('Vitesse de rotation');
+    ylabel('Im(s)');
+end
+
