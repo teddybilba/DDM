@@ -23,7 +23,8 @@ for n = 1:length(Omega)
 G=[0 0; 0 -i*Omega(n)*Jp];
 eq_mat = M*s^2 + (C+G)*s + K;
 sys = inv(eq_mat);
-poles_system = [poles_system  wkeep(pole(sys), length(poles_system)/2, 'l')];
+poles = pole(sys);
+poles_system = [poles_system  wkeep(poles, length(poles)/2, 'l')];
 % Appends poles to matrix 
 end
 
