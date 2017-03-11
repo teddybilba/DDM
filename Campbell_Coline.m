@@ -8,7 +8,7 @@ Jp = 10;
 Omega = 0:400;
 cr1 = 04; cr2 = 05; cr3 = 0; cr4 = 0;
 cn1 = 10; cn2 = 01; cn3 = 0; cn4 = 09;
-k11 = 500; k12 = 1340; k21 = k12; k22 = 299;
+k11 = 500; k12 =1380; k21 = k12; k22 = 299;
 
 % **** Matrices **** %
 M = [m 0; 0 Jt];
@@ -40,9 +40,13 @@ if size(poles_system,1) == 4        % If 2 poles
     plot(Omega, imag(poles_system(1,:)), 'b', Omega, imag(poles_system(2,:)), 'r');   
     xlabel('Vitesse de rotation');
     ylabel('Im(s)');
+
     
 elseif size(poles_system,1) == 6
     subplot(2,1,1)
     plot(Omega, real(poles_system(1,:)), 'b', Omega, real(poles_system(2,:)), 'r', Omega, real(poles_system(3,:)), 'g');
     title('Diagramme de Campbell');
     xlabel('Vitesse de rotation');
+end
+
+    
