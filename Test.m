@@ -17,8 +17,8 @@ M = [m 0; 0 Jt];
 %K = [k11 k12; k21 k22];
 s = tf('s');
 poles_system=[];
-for m=1:length(param)
-    append(poles_system,[]);
+for k=1:length(param)
+    poles_system=append(poles_system,[]);
 end
     
 % *** Calculates the poles **** %
