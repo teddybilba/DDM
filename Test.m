@@ -3,11 +3,11 @@ warning off Control:ltiobject:TFComplex
 
 % **** Variables **** %
 m = 10;
-Jt = 120
+Jt = 60;
 Jp = 200;
 Omega = 0:1000;
-cr1 = 0; cr2 = 0; cr3 = 0; cr4 = 0;         %e4
-cn1 = 0; cn2 = 0; cn3 = 0; cn4 = 0;         %e4
+cr1 = 1000; cr2 = 1000; cr3 = 1000; cr4 = 1000;         %e4
+cn1 = 1000; cn2 = 1000; cn3 = 1000; cn4 = 1000;         %e4
 k11 = 2.5e6; k12 = 1e6; k21 = k12; k22 = k11;   %e6
 
 % **** Matrices **** %
@@ -29,18 +29,21 @@ end
 
 
 % **** Plot CAMPBELL DIAGRAM **** %
-figure();
-title('Diagramme de Campbell');
-xlabel('Vitesse de rotation (rad/s)');
-ylabel('Im(s)');
-box on; grid on;
+
 
 if size(poles_system,1) == 4        % If 2 poles
     plot(Omega, imag(poles_system(1,:)), 'b', Omega, imag(poles_system(2,:)), 'r', Omega, Omega, '--', 'k'); 
+    title('Diagramme de Campbell');
+    xlabel('Vitesse de rotation (rad/s)');
+    ylabel('Im(s)');
+    box on; grid on;
     
 elseif size(poles_system,1) == 8        % If 4 poles
     plot(Omega, imag(poles_system(1,:)), 'b', Omega, imag(poles_system(2,:)), 'r', Omega, imag(poles_system(3,:)), 'g', Omega, imag(poles_system(4,:)), 'm', Omega, Omega, '--k');
-    
+    title('Diagramme de Campbell');
+    xlabel('Vitesse de rotation (rad/s)');
+    ylabel('Im(s)');
+    box on; grid on;
 end
 display(poles_system);
 
