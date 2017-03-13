@@ -5,7 +5,7 @@ warning off Control:ltiobject:TFComplex
 m = 10;
 Jt = 120
 Jp = 200;
-Omega = 0:1:1000;
+Omega = 0:1000;
 cr1 = 0; cr2 = 0; cr3 = 0; cr4 = 0;         %e4
 cn1 = 0; cn2 = 0; cn3 = 0; cn4 = 0;         %e4
 k11 = 2.5e6; k12 = 1e6; k21 = k12; k22 = k11;   %e6
