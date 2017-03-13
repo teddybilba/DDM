@@ -1,4 +1,4 @@
-++clc; close all;
+clc; close all;
 %warning off Control:ltiobject:TFComplex
 
 % **** Variables **** %
