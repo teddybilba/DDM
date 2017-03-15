@@ -5,8 +5,8 @@ tic
 % **** Variables **** %
 m = 10;
 Jt = 120;
-Jp = 200;
-Omega = 0:1000;
+Jp = 600;
+Omega = 0:10:1000;
 cr1 = 1000; cr2 = 1000; cr3 = 1000; cr4 = 1000;         %e4
 cn1 = 1000; cn2 = 1000; cn3 = 1000; cn4 = 1000;         %e4
 k11 = 2.5e6; k12 = 1e6; k21 = k12; k22 = k11;   %e6
@@ -24,6 +24,7 @@ for n = 1:length(Omega)
 G=[0 0; 0 -1i*Omega(n)*Jp];
 eq_mat = M*s^2 + (Cn+Cr+G)*s + (K-1i*Omega(n)*Cr);
 sys = inv(eq_mat);
+bode(sys);
 poles_system = [poles_system  pole(sys)];   % Appends poles to matrix 
 end
 
