@@ -7,8 +7,8 @@ m = 10;
 Jt = 120;
 Jp = 200;
 Omega = 0:1000;
-cr1 = 30000; cr2 = 30000; cr3 = 30000; cr4 = 30000;         %e4
-cn1 = 30000; cn2 = 30000; cn3 = 30000; cn4 = 30000;         %e4
+cr1 = 1000; cr2 = 1000; cr3 = 1000; cr4 = 1000;         %e4
+cn1 = 1000; cn2 = 1000; cn3 = 1000; cn4 = 1000;         %e4
 k11 = 2.5e6; k12 = 1e6; k21 = k12; k22 = k11;   %e6
 
 % **** Matrices **** %
@@ -18,13 +18,11 @@ Cr = [cr1 cr2; cr3 cr4];
 K = [k11 k12; k21 k22];
 s = tf('s');
 poles_system = [];
-
-
     
 % *** Calculates the poles **** %
 for n = 1:length(Omega)
-G=[0 0; 0 -i*Omega(n)*Jp];
-eq_mat = M*s^2 + (Cn+Cr+G)*s + (K-i*Omega(n)*Cr);
+G=[0 0; 0 -1i*Omega(n)*Jp];
+eq_mat = M*s^2 + (Cn+Cr+G)*s + (K-1i*Omega(n)*Cr);
 sys = inv(eq_mat);
 poles_system = [poles_system  pole(sys)];   % Appends poles to matrix 
 end
